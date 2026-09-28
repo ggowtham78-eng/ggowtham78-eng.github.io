@@ -1350,13 +1350,6 @@ function setActiveNav(id){
 }
 
 function updateActiveNav(){
-    const hash = window.location.hash.replace('#','');
-
-    if(hash && document.getElementById(hash)){
-        setActiveNav(hash);
-        return;
-    }
-
     const y = window.scrollY + 180;
     let current = sections[0];
 
@@ -1371,24 +1364,16 @@ function updateActiveNav(){
     }
 }
 
-/* Set exactly one active item when the page opens. */
 updateActiveNav();
 
-/* Update while scrolling. */
 window.addEventListener('scroll', updateActiveNav, {passive:true});
 
-/* Update when a navigation link changes the URL hash. */
-window.addEventListener('hashchange', updateActiveNav);
-
-/* On mobile, close any persistent touch/hover state by explicitly
-   setting the selected link after a navigation tap. */
 links.forEach(link => {
     link.addEventListener('click', () => {
         const href = link.getAttribute('href') || '';
 
         if(href.startsWith('#')){
-            const id = href.substring(1);
-            setActiveNav(id);
+            setActiveNav(href.substring(1));
         }
     });
 });

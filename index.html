@@ -93,10 +93,16 @@ nav{
     transition:.25s;
 }
 
-.nav-links a:hover,
 .nav-links a.active{
     background:var(--gold);
     color:var(--navy);
+}
+
+@media (hover:hover) and (pointer:fine){
+    .nav-links a:hover{
+        background:var(--gold);
+        color:var(--navy);
+    }
 }
 
 /* =========================
@@ -733,10 +739,11 @@ footer .small{
 
 <ul class="nav-links">
 
-<li><a class="active" href="#home">Home</a></li>
+<li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#projects">Projects</a></li>
+<li><a href="software-work-gallery.html">Work Gallery</a></li>
 <li><a href="#models">3D Models</a></li>
 <li><a href="#documents">Resume</a></li>
 <li><a href="#contact">Contact</a></li>
@@ -1326,35 +1333,64 @@ Civil Engineer | Assistant Manager – BIM | Digital Construction
 
 <script>
 
-const links =
-[...document.querySelectorAll('.nav-links a')];
+const links = [...document.querySelectorAll('.nav-links a')];
+const sections = [...document.querySelectorAll('header[id], section[id]')];
 
-const sections =
-[...document.querySelectorAll('header[id], section[id]')];
+function setActiveNav(id){
+    links.forEach(link => link.classList.remove('active'));
 
-window.addEventListener('scroll', () => {
+    const activeLink = links.find(link => {
+        const href = link.getAttribute('href') || '';
+        return href === '#' + id;
+    });
 
-    const y = window.scrollY + 150;
+    if(activeLink){
+        activeLink.classList.add('active');
+    }
+}
 
+function updateActiveNav(){
+    const hash = window.location.hash.replace('#','');
+
+    if(hash && document.getElementById(hash)){
+        setActiveNav(hash);
+        return;
+    }
+
+    const y = window.scrollY + 180;
     let current = sections[0];
 
     sections.forEach(section => {
-
         if(section.offsetTop <= y){
             current = section;
         }
-
     });
 
-    links.forEach(link => {
+    if(current){
+        setActiveNav(current.id);
+    }
+}
 
-        link.classList.toggle(
-            'active',
-            link.getAttribute('href') === '#' + current.id
-        );
+/* Set exactly one active item when the page opens. */
+updateActiveNav();
 
+/* Update while scrolling. */
+window.addEventListener('scroll', updateActiveNav, {passive:true});
+
+/* Update when a navigation link changes the URL hash. */
+window.addEventListener('hashchange', updateActiveNav);
+
+/* On mobile, close any persistent touch/hover state by explicitly
+   setting the selected link after a navigation tap. */
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        const href = link.getAttribute('href') || '';
+
+        if(href.startsWith('#')){
+            const id = href.substring(1);
+            setActiveNav(id);
+        }
     });
-
 });
 
 </script>

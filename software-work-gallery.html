@@ -152,6 +152,16 @@ nav{
     padding:8px 13px;
     border-radius:30px;
     font-size:13px;
+    text-decoration:none;
+    display:inline-block;
+    transition:.25s;
+}
+
+.tool-pill:hover{
+    background:var(--gold);
+    color:var(--navy);
+    border-color:var(--gold);
+    transform:translateY(-2px);
 }
 
 /* INTRO */
@@ -187,6 +197,7 @@ nav{
     max-width:1250px;
     margin:auto;
     padding:55px 6% 45px;
+    scroll-margin-top:95px;
 }
 
 .software-header{
@@ -315,6 +326,7 @@ nav{
 
 /* VIDEO SECTION */
 .video-section{
+    scroll-margin-top:95px;
     background:var(--navy);
     color:#fff;
     max-width:none;
@@ -374,6 +386,7 @@ nav{
 
 /* RENDERING */
 .render-section{
+    scroll-margin-top:95px;
     max-width:1250px;
     margin:auto;
     padding:70px 6%;
@@ -494,13 +507,13 @@ footer .small{
         </p>
 
         <div class="hero-tools">
-            <span class="tool-pill">AutoCAD</span>
-            <span class="tool-pill">Revit</span>
-            <span class="tool-pill">Civil 3D</span>
-            <span class="tool-pill">Navisworks</span>
-            <span class="tool-pill">Synchro 4D</span>
-            <span class="tool-pill">4D Visualization</span>
-            <span class="tool-pill">Rendering</span>
+            <a class="tool-pill" href="#autocad">AutoCAD</a>
+            <a class="tool-pill" href="#revit">Revit</a>
+            <a class="tool-pill" href="#civil3d">Civil 3D</a>
+            <a class="tool-pill" href="#navisworks">Navisworks</a>
+            <a class="tool-pill" href="#synchro">Synchro 4D</a>
+            <a class="tool-pill" href="#videos">4D Visualization</a>
+            <a class="tool-pill" href="#rendering">Rendering</a>
         </div>
     </div>
 </header>
@@ -510,6 +523,7 @@ footer .small{
     <h2 class="section-title">Software / Work Gallery</h2>
     <p class="section-sub">
         Selected technical work, modelling outputs and digital construction workflows.
+        Each section can contain 3–10 images or project snapshots.
     </p>
 </div>
 

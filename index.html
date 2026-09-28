@@ -633,10 +633,41 @@ footer .small{
 
     nav{
         justify-content:flex-start;
+        gap:10px;
+        padding:10px 3%;
     }
 
+    /* Keep the logo visible on mobile */
     .logo{
+        display:flex;
+        flex:0 0 auto;
+        align-items:center;
+    }
+
+    .logo img{
+        height:44px;
+        width:auto;
+        max-width:90px;
+        object-fit:contain;
+    }
+
+    .nav-links{
+        flex:1 1 auto;
+        min-width:0;
+        overflow-x:auto;
+        overflow-y:hidden;
+        white-space:nowrap;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+    }
+
+    .nav-links::-webkit-scrollbar{
         display:none;
+    }
+
+    .nav-links a{
+        padding:8px 10px;
+        font-size:13px;
     }
 
     .hero{

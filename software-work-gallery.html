@@ -33,17 +33,26 @@ body{
     line-height:1.6;
 }
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION
+========================= */
+
 nav{
     position:fixed;
-    top:0;left:0;right:0;
+    top:0;
+    left:0;
+    right:0;
     z-index:1000;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:10px 5%;
-    background:rgba(7,24,45,.97);
+
+    padding:14px 5%;
+
+    background:rgba(7,24,45,.96);
     backdrop-filter:blur(12px);
+
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
@@ -54,9 +63,9 @@ nav{
 }
 
 .logo img{
-    height:62px;
+    height:70px;
     width:auto;
-    max-width:145px;
+    max-width:150px;
     object-fit:contain;
     display:block;
 }
@@ -65,8 +74,6 @@ nav{
     display:flex;
     gap:8px;
     list-style:none;
-    overflow-x:auto;
-    white-space:nowrap;
 }
 
 .nav-links a{
@@ -79,11 +86,18 @@ nav{
     transition:.25s;
 }
 
-.nav-links a:hover,
 .nav-links a.active{
     background:var(--gold);
     color:var(--navy);
 }
+
+@media (hover:hover) and (pointer:fine){
+    .nav-links a:hover{
+        background:var(--gold);
+        color:var(--navy);
+    }
+}
+
 
 /* HERO */
 .gallery-hero{
@@ -233,16 +247,6 @@ nav{
     max-width:650px;
     font-size:14px;
 }
-
-.back-top{
-    color:var(--blue);
-    text-decoration:none;
-    font-size:13px;
-    font-weight:700;
-    white-space:nowrap;
-}
-
-.back-top:hover{color:var(--navy)}
 
 .gallery-grid{
     display:grid;
@@ -451,8 +455,18 @@ footer .small{
 }
 
 @media(max-width:600px){
-    nav{justify-content:flex-start;padding:8px 4%}
-    .logo img{height:48px;max-width:95px}
+    nav{justify-content:flex-start;padding:10px 3%;gap:10px}
+    .logo img{height:44px;max-width:90px}
+    .nav-links{
+        flex:1 1 auto;
+        min-width:0;
+        overflow-x:auto;
+        overflow-y:hidden;
+        white-space:nowrap;
+        scrollbar-width:none;
+        -webkit-overflow-scrolling:touch;
+    }
+    .nav-links::-webkit-scrollbar{display:none}
     .nav-links{gap:3px}
     .nav-links a{padding:8px 10px;font-size:13px}
 
@@ -472,26 +486,58 @@ footer .small{
 
     .video-grid{grid-template-columns:1fr}
 }
+
+
+/* BACK TO TOP — same floating button as the home page */
+.back-to-top{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:900;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--gold);
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:800;
+    box-shadow:0 8px 22px rgba(0,0,0,.22);
+    transition:.25s;
+}
+.back-to-top:hover{transform:translateY(-3px);}
+@media(max-width:600px){
+    .back-to-top{
+        right:15px;
+        bottom:15px;
+        width:40px;
+        height:40px;
+        font-size:18px;
+    }
+}
 </style>
 </head>
 
 <body id="top">
 
 <nav>
+
     <a href="index.html" class="logo">
         <img src="GL-Logo.png" alt="G. Gowtham Logo">
     </a>
 
     <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#skills">Skills</a></li>
         <li><a href="index.html#projects">Projects</a></li>
-        <li><a class="active" href="software-work-gallery.html">Work Gallery</a></li>
-        <li><a href="index.html#models">3D Models</a></li>
-        <li><a href="index.html#documents">Resume</a></li>
+        <li><a href="index.html#documents">Documents</a></li>
         <li><a href="index.html#contact">Contact</a></li>
     </ul>
+
 </nav>
 
 <header class="gallery-hero">
@@ -536,7 +582,6 @@ footer .small{
             <h2 class="software-title">AutoCAD</h2>
             <div class="software-subtitle">2D Drafting & Engineering Documentation</div>
         </div>
-        <a class="back-top" href="#top">↑ Back to top</a>
     </div>
 
     <p class="software-description">
@@ -624,7 +669,6 @@ footer .small{
             <h2 class="software-title">Revit</h2>
             <div class="software-subtitle">BIM Modelling & Multidisciplinary Coordination</div>
         </div>
-        <a class="back-top" href="#top">↑ Back to top</a>
     </div>
 
     <p class="software-description">
@@ -702,7 +746,6 @@ footer .small{
             <h2 class="software-title">Civil 3D</h2>
             <div class="software-subtitle">Civil & Infrastructure Design</div>
         </div>
-        <a class="back-top" href="#top">↑ Back to top</a>
     </div>
 
     <p class="software-description">
@@ -751,7 +794,6 @@ footer .small{
             <h2 class="software-title">Navisworks</h2>
             <div class="software-subtitle">BIM Coordination & Clash Detection</div>
         </div>
-        <a class="back-top" href="#top">↑ Back to top</a>
     </div>
 
     <p class="software-description">
@@ -800,7 +842,6 @@ footer .small{
             <h2 class="software-title">Synchro 4D Pro</h2>
             <div class="software-subtitle">4D Construction Planning & Simulation</div>
         </div>
-        <a class="back-top" href="#top">↑ Back to top</a>
     </div>
 
     <p class="software-description">
@@ -903,7 +944,6 @@ footer .small{
             <h2 class="software-title">Visualization & Rendering</h2>
             <div class="software-subtitle">BIM & Construction Visualization</div>
         </div>
-        <a class="back-top" href="#top">↑ Back to top</a>
     </div>
 
     <p class="software-description">
@@ -944,6 +984,8 @@ footer .small{
 
 
 <!-- LIGHTBOX -->
+<a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
+
 <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
         <span class="lightbox-close" id="lightboxClose">&times;</span>

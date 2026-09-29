@@ -722,6 +722,38 @@ footer .small{
     }
 }
 
+
+/* BACK TO TOP */
+.back-to-top{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:900;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--gold);
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:800;
+    box-shadow:0 8px 22px rgba(0,0,0,.22);
+    transition:.25s;
+}
+.back-to-top:hover{transform:translateY(-3px);}
+@media(max-width:600px){
+    .back-to-top{
+        right:15px;
+        bottom:15px;
+        width:40px;
+        height:40px;
+        font-size:18px;
+    }
+}
+
 </style>
 </head>
 
@@ -743,9 +775,7 @@ footer .small{
 <li><a href="#about">About</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#projects">Projects</a></li>
-<li><a href="software-work-gallery.html">Work Gallery</a></li>
-<li><a href="#models">3D Models</a></li>
-<li><a href="#documents">Resume</a></li>
+<li><a href="#documents">Documents</a></li>
 <li><a href="#contact">Contact</a></li>
 
 </ul>
@@ -800,8 +830,8 @@ BIM Coordination
 
 <div class="hero-buttons">
 
-<a class="btn btn-primary" href="#projects">
-View My Projects →
+<a class="btn btn-primary" href="software-work-gallery.html">
+View Work Gallery →
 </a>
 
 <a class="btn btn-outline" href="Resume-BIM.pdf" target="_blank">
@@ -1122,48 +1152,6 @@ and 4D/5D construction workflows.
 
 </section>
 
-
-<!-- =========================
-     3D MODELS
-========================= -->
-
-<section id="models">
-
-<div class="section-label">
-Digital Models
-</div>
-
-<h2 class="section-title">
-3D BIM Models
-</h2>
-
-<p class="section-sub">
-Interactive BIM model showcase — to be added in the next stage.
-</p>
-
-
-<div class="model-box">
-
-<h3>
-Interactive 3D Model Viewer
-</h3>
-
-<p>
-This section will later contain your Revit / IFC /
-web-based BIM model viewer.
-</p>
-
-<br>
-
-<a class="btn btn-primary" href="#contact">
-Coming Soon
-</a>
-
-</div>
-
-</section>
-
-
 <!-- =========================
      DOCUMENTS
 ========================= -->
@@ -1313,6 +1301,8 @@ Puducherry, India
 <!-- =========================
      FOOTER
 ========================= -->
+
+<a href="#home" class="back-to-top" aria-label="Back to top">↑</a>
 
 <footer>
 
